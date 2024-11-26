@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'favorites_screen.dart';
 import 'profile_screen.dart';
-import 'search_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,8 +52,6 @@ class _MainNavigationState extends State<MainNavigation> {
         onTap: _onItemTapped,
         selectedItemColor: Colors.green,
         unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border),
