@@ -29,6 +29,7 @@ flutter:
     - assets/pumpkin.jpg
     - assets/hot_chocolate.jpg
     - assets/logo.png
+    - assets/login_bg.jpg
     # Categories
     - assets/categories/dietary.png
     - assets/categories/health.jpg

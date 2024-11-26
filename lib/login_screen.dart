@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'signup_screen.dart';
+import 'forgot_password.dart';
+import 'main.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -8,71 +11,144 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  bool _isPasswordVisible = false;
 
-  void _login(BuildContext context) {
-    Navigator.pushNamed(context, '/home');
-  }
+  final String mockEmail = "test@example.com";
+  final String mockPassword = "password123";
 
-  void _forgotPassword() {
-    // TODO: Implement forgot password functionality
+  void _login() {
+    if (_emailController.text == mockEmail && _passwordController.text == mockPassword) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MainNavigation()),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Error"),
+          content: Text("Invalid email or password."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("OK"),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
+      backgroundColor: Color(0xFFF5F5F5),
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 32.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'LOG IN',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: Image.asset(
+                  'assets/logo.png',
+                  width: 120,
+                  height: 120,
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 20),
+              Text(
+                "Login",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green.shade800,
+                ),
+              ),
+              const SizedBox(height: 20),
               TextField(
-                controller: _passwordController,
-                obscureText: !_isPasswordVisible,
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
+                  labelText: "Email or Phone Number",
+                  labelStyle: TextStyle(color: Colors.green.shade800),
+                  hintText: "Enter your email or phone",
+                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  prefixIcon: Icon(Icons.email, color: Colors.green.shade800),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),
-              
-              SizedBox(height: 20),
+              const SizedBox(height: 10),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.green.shade800),
+                  hintText: "Enter your password",
+                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  prefixIcon: Icon(Icons.lock, color: Colors.green.shade800),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 25),
               ElevatedButton(
-                onPressed: () => _login(context),
-                child: Text('Log in'),
+                onPressed: _login,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  minimumSize: Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  "Log in",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-              SizedBox(height: 16),
-              TextButton(
-                onPressed: _forgotPassword,
-                child: Text('Forgot Password?'),
-              ),
-              SizedBox(height: 10),
-              TextButton(
-                onPressed: () => Navigator.pushNamed(context, '/signup'),
-                child: Text('Signup'),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ForgotPasswordScreen()),
+                    ),
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        color: Colors.green.shade800,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  TextButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()),
+                    ),
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        color: Colors.green.shade800,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'favorites_screen.dart';
 import 'profile_screen.dart';
+import 'login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'NutriWise',
       theme: ThemeData(primarySwatch: Colors.green),
-      home: const MainNavigation(),
+      home: LoginScreen(),
     );
   }
 }

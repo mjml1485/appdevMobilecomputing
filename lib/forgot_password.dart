@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
-  final _nameController = TextEditingController();
+class ForgotPasswordScreen extends StatelessWidget {
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
 
-  void _signUp(BuildContext context) {
-    Navigator.pop(context);
+  void _resetPassword(BuildContext context) {
+    // Simulate password reset
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Account created successfully!")),
+      SnackBar(content: Text("Password reset link sent to ${_emailController.text}")),
     );
+    Navigator.pop(context);
   }
 
   @override
@@ -32,9 +31,9 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Sign Up
+              // Reset Password
               Text(
-                "Sign Up",
+                "Reset Password",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -42,29 +41,14 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Name input
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: "Name",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
-                  hintText: "Enter your name",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
-                  prefixIcon: Icon(Icons.person, color: Colors.green.shade800),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
               // Email input
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  labelText: "Email or Phone Number",
+                  labelText: "Enter your email",
                   labelStyle: TextStyle(color: Colors.green.shade800),
-                  hintText: "Enter your email or phone",
+                  hintText: "Enter your email address",
                   hintStyle: TextStyle(color: Colors.green.shade600),
                   prefixIcon: Icon(Icons.email, color: Colors.green.shade800),
                   border: OutlineInputBorder(
@@ -72,26 +56,10 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
-              // Password input
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
-                  hintText: "Enter your password",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
-                  prefixIcon: Icon(Icons.lock, color: Colors.green.shade800),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
               const SizedBox(height: 25),
-              // Sign up button
+              // Send Reset Link button
               ElevatedButton(
-                onPressed: () => _signUp(context),
+                onPressed: () => _resetPassword(context),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   minimumSize: Size(double.infinity, 50),
@@ -100,7 +68,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  "Sign up",
+                  "Send Reset Link",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -109,14 +77,14 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              // Link to go back to Log in button
+              // Link to go back to login screen
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
                     child: Text(
-                      "Already have an account? Log in",
+                      "Back to Login",
                       style: TextStyle(
                         color: Colors.green.shade800,
                         fontSize: 14,
