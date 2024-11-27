@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'profile_screen.dart';
+import 'favorites_screen.dart';
+import 'settings_screen.dart';
+import 'contact_us.dart';
+import 'log_out.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+
+  void _navigate(BuildContext context, Widget screen) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => screen),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +43,41 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
-            child: CircleAvatar(
-              radius: 18,
-              backgroundImage: AssetImage('assets/profile.jpg'),
+            child: PopupMenuButton<String>(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              icon: CircleAvatar(
+                radius: 18,
+                backgroundImage: AssetImage('assets/profile.jpg'),
+              ),
+              onSelected: (value) {
+                switch (value) {
+                  case 'Profile':
+                    _navigate(context, ProfileScreen());
+                    break;
+                  case 'Favorites':
+                    _navigate(context, FavoritesScreen());
+                    break;
+                  case 'Settings':
+                    _navigate(context, SettingsScreen());
+                    break;
+                  case 'Contact Us':
+                    _navigate(context, ContactUsScreen());
+                    break;
+                  case 'Log Out':
+                    _navigate(context, LogOutScreen());
+                    break;
+                }
+              },
+              offset: Offset(0, 50),
+              itemBuilder: (context) => [
+                _buildPopupMenuItem('Profile'),
+                _buildPopupMenuItem('Favorites'),
+                _buildPopupMenuItem('Settings'),
+                _buildPopupMenuItem('Contact Us'),
+                _buildPopupMenuItem('Log Out'),
+              ],
             ),
           ),
         ],
@@ -224,6 +268,47 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  PopupMenuItem<String> _buildPopupMenuItem(String text) {
+    return PopupMenuItem<String>(
+      value: text,
+      child: Row(
+        children: [
+          Icon(
+            _getMenuIcon(text),
+            color: Colors.green,
+          ),
+          const SizedBox(width: 10),
+          Text(
+            text,
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 14,
+              color: Colors.black,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  IconData _getMenuIcon(String text) {
+    switch (text) {
+      case 'Profile':
+        return Icons.person;
+      case 'Favorites':
+        return Icons.favorite;
+      case 'Settings':
+        return Icons.settings;
+      case 'Contact Us':
+        return Icons.contact_mail;
+      case 'Log Out':
+        return Icons.logout;
+      default:
+        return Icons.help;
+    }
   }
 
   Widget _buildCategoryIcon(String label, String assetPath) {
