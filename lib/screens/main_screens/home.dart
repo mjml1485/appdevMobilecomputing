@@ -6,7 +6,7 @@ import 'contact_us.dart';
 import 'log_out.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   void _navigate(BuildContext context, Widget screen) {
     Navigator.push(
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
               height: 30,
             ),
             const SizedBox(width: 8),
-            Text(
+            const Text(
               'Smart Swap',
               style: TextStyle(
                 fontFamily: 'YesevaOne',
@@ -47,30 +47,30 @@ class HomeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-              icon: CircleAvatar(
+              icon: const CircleAvatar(
                 radius: 18,
                 backgroundImage: AssetImage('assets/profile.jpg'),
               ),
               onSelected: (value) {
                 switch (value) {
                   case 'Profile':
-                    _navigate(context, ProfileScreen());
+                    _navigate(context, const ProfileScreen());
                     break;
                   case 'Favorites':
-                    _navigate(context, FavoritesScreen());
+                    _navigate(context, const FavoritesScreen());
                     break;
                   case 'Settings':
-                    _navigate(context, SettingsScreen());
+                    _navigate(context, const SettingsScreen());
                     break;
                   case 'Contact Us':
-                    _navigate(context, ContactUsScreen());
+                    _navigate(context, const ContactUsScreen());
                     break;
                   case 'Log Out':
-                    _navigate(context, LogOutScreen());
+                    _navigate(context, const LogOutScreen());
                     break;
                 }
               },
-              offset: Offset(0, 50),
+              offset: const Offset(0, 50),
               itemBuilder: (context) => [
                 _buildPopupMenuItem('Profile'),
                 _buildPopupMenuItem('Favorites'),
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 5,
@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: Column(
+                            child: const Column(
                               children: [
                                 Text(
                                   'NutriWise',
@@ -147,7 +147,7 @@ class HomeScreen extends StatelessWidget {
                                     color: Colors.green,
                                   ),
                                 ),
-                                const SizedBox(height: 8),
+                                SizedBox(height: 8),
                                 Text(
                                   'Discover Healthier Grocery Alternatives',
                                   style: TextStyle(
@@ -187,11 +187,11 @@ class HomeScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 5,
-                      offset: const Offset(0, 2),
+                      offset: Offset(0, 2),
                     ),
                   ],
                 ),
@@ -201,7 +201,7 @@ class HomeScreen extends StatelessWidget {
                       icon: const Icon(Icons.filter_list, color: Colors.green),
                       onPressed: () {},
                     ),
-                    Expanded(
+                    const Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Search product',
@@ -282,7 +282,7 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(width: 10),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'Poppins',
               fontSize: 14,
               color: Colors.black,
@@ -384,7 +384,7 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: 'Poppins',
           fontSize: 17,
           fontWeight: FontWeight.bold,

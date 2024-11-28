@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -36,10 +38,10 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search"),
-        actions: [
+        title: const Text("Search"),
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundImage: AssetImage("assets/profile.jpg"), // Replace with user's profile image
             ),
@@ -55,11 +57,11 @@ class _SearchScreenState extends State<SearchScreen> {
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: "Search for products...",
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.search),
+                border: const OutlineInputBorder(),
+                prefixIcon: const Icon(Icons.search),
                 suffixIcon: _searchController.text.isNotEmpty
                     ? IconButton(
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                         onPressed: () {
                           setState(() {
                             _searchController.clear();
@@ -71,7 +73,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               onChanged: _searchProducts,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Search Results
             Expanded(
               child: _searchResults.isEmpty
@@ -80,7 +82,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         _searchController.text.isEmpty
                             ? "Start typing to search for products."
                             : "No results found.",
-                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                        style: const TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                     )
                   : ListView.builder(
@@ -88,7 +90,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       itemBuilder: (context, index) {
                         final product = _searchResults[index];
                         return Card(
-                          margin: EdgeInsets.symmetric(vertical: 8.0),
+                          margin: const EdgeInsets.symmetric(vertical: 8.0),
                           child: ListTile(
                             leading: Image.asset(
                               product["image"]!,

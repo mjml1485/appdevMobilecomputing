@@ -1,47 +1,23 @@
 import 'package:flutter/material.dart';
-import 'signup_screen.dart';
-import 'forgot_password.dart';
-import 'main.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class SignUpScreen extends StatelessWidget {
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final String mockEmail = "test@example.com";
-  final String mockPassword = "password123";
+  SignUpScreen({super.key});
 
-  void _login() {
-    if (_emailController.text == mockEmail && _passwordController.text == mockPassword) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MainNavigation()),
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Error"),
-          content: Text("Invalid email or password."),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text("OK"),
-            ),
-          ],
-        ),
-      );
-    }
+  void _signUp(BuildContext context) {
+    Navigator.pop(context);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Account created successfully!")),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: Colors.white,
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
@@ -57,8 +33,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 20),
+              // Sign Up
               Text(
-                "Login",
+                "Sign Up",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
@@ -66,6 +43,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 20),
+              // Name input
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: "Name",
+                  labelStyle: TextStyle(color: Colors.green.shade800),
+                  hintText: "Enter your name",
+                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  prefixIcon: Icon(Icons.person, color: Colors.green.shade800),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              // Email input
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -81,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 10),
+              // Password input
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -96,17 +90,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 25),
+              // Sign up button
               ElevatedButton(
-                onPressed: _login,
+                onPressed: () => _signUp(context),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text(
-                  "Log in",
+                child: const Text(
+                  "Sign up",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -115,35 +110,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 10),
+              // Link to go back to Log in button
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ForgotPasswordScreen()),
-                    ),
+                    onPressed: () => Navigator.pop(context),
                     child: Text(
-                      "Forgot Password?",
+                      "Already have an account? Log in",
                       style: TextStyle(
                         color: Colors.green.shade800,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  TextButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()),
-                    ),
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        color: Colors.green.shade800,
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

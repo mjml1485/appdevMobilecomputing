@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
         centerTitle: true,
         backgroundColor: Colors.green,
       ),
@@ -13,60 +15,60 @@ class ProfileScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               CircleAvatar(
                 radius: 60,
-                backgroundImage: AssetImage("assets/profile.jpg"),
+                backgroundImage: const AssetImage("assets/profile.jpg"),
                 backgroundColor: Colors.grey.shade200,
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Coco Martin",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 "cocomartin@example.com",
                 style: TextStyle(color: Colors.grey),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   // TODO: Implement Edit Profile functionality
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: Text("Edit Profile", style: TextStyle(fontSize: 16)),
+                child: const Text("Edit Profile", style: TextStyle(fontSize: 16)),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               // Divider
-              Divider(thickness: 1),
-              SizedBox(height: 10),
+              const Divider(thickness: 1),
+              const SizedBox(height: 10),
               // Menu Options
               ListTile(
-                leading: Icon(Icons.history, color: Colors.green),
-                title: Text("Order History"),
+                leading: const Icon(Icons.history, color: Colors.green),
+                title: const Text("Order History"),
                 onTap: () {
                   // TODO: Navigate to Order History
                 },
               ),
-              Divider(thickness: 1),
+              const Divider(thickness: 1),
               ListTile(
-                leading: Icon(Icons.settings, color: Colors.green),
-                title: Text("Settings"),
+                leading: const Icon(Icons.settings, color: Colors.green),
+                title: const Text("Settings"),
                 onTap: () {
                   // TODO: Navigate to Settings
                 },
               ),
-              Divider(thickness: 1),
+              const Divider(thickness: 1),
               ListTile(
-                leading: Icon(Icons.logout, color: Colors.red),
-                title: Text("Log Out"),
+                leading: const Icon(Icons.logout, color: Colors.red),
+                title: const Text("Log Out"),
                 onTap: () {
                   // TODO: Implement Log Out functionality
                   _showLogoutConfirmation(context);
@@ -84,12 +86,12 @@ class ProfileScreen extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text("Log Out"),
-          content: Text("Are you sure you want to log out?"),
+          title: const Text("Log Out"),
+          content: const Text("Are you sure you want to log out?"),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             TextButton(
               onPressed: () {
@@ -97,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.pushReplacementNamed(context, '/login');
               },
-              child: Text("Log Out"),
+              child: const Text("Log Out"),
             ),
           ],
         );

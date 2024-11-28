@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatelessWidget {
+class ContactUsScreen extends StatelessWidget {
+  const ContactUsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: const Text("Contact Us"),
         backgroundColor: Colors.green,
       ),
-      body: Center(
-        child: Text("Settings Screen"),
+      body: const Center(
+        child: Text("Contact Us Screen"),
       ),
     );
   }

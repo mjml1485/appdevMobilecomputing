@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
 class LogOutScreen extends StatelessWidget {
-  const LogOutScreen({Key? key}) : super(key: key);
+  const LogOutScreen({super.key});
 
   void _logOut(BuildContext context) {
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
           (route) => false,
     );
   }
