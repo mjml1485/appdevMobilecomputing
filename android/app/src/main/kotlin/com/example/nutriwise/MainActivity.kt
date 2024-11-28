@@ -1,5 +1,6 @@
-package com.example.nutriwise  // Update the package name here
+package com.example.NutriWise  // Updated to match the package name
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity()
+class MainActivity: FlutterActivity() {
+}

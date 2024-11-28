@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'sign_up.dart';
 import 'forgot_password.dart';
@@ -13,22 +14,43 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
-  final String mockEmail = "test@example.com";
-  final String mockPassword = "password123";
+  // Method to login
+  void _login() async {
+    try {
+      final email = _emailController.text;
+      final password = _passwordController.text;
 
-  void _login() {
-    if (_emailController.text == mockEmail && _passwordController.text == mockPassword) {
+      if (email.isEmpty || !RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").hasMatch(email)) {
+        throw FirebaseAuthException(code: 'invalid-email', message: 'Please enter a valid email address');
+      }
+
+      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const MainNavigation()),
       );
-    } else {
+    } on FirebaseAuthException catch (e) {
+      String errorMessage = 'An error occurred. Please try again later.';
+      if (e.code == 'user-not-found') {
+        errorMessage = 'No user found for this email address.';
+      } else if (e.code == 'wrong-password') {
+        errorMessage = 'Incorrect password.';
+      } else if (e.code == 'invalid-email') {
+        errorMessage = 'Invalid email format.';
+      } else {
+        errorMessage = e.message ?? errorMessage;
+      }
+
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: const Text("Error"),
-          content: const Text("Invalid email or password."),
+          content: Text(errorMessage),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -38,6 +60,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     }
+  }
+
+  @override
+  void dispose() {
+    _emailController.clear();
+    _passwordController.clear();
+    super.dispose();
   }
 
   @override
@@ -62,8 +91,9 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 "Login",
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins',  // Apply Poppins font
                   color: Colors.green.shade800,
                 ),
               ),
@@ -73,9 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: "Email or Phone Number",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
+                  labelStyle: TextStyle(color: Colors.green.shade800, fontFamily: 'Poppins', fontWeight: FontWeight.normal),  // Poppins regular weight
                   hintText: "Enter your email or phone",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  hintStyle: TextStyle(color: Colors.green.shade600, fontFamily: 'Poppins', fontWeight: FontWeight.normal),  // Poppins regular weight
                   prefixIcon: Icon(Icons.email, color: Colors.green.shade800),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -88,9 +118,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
+                  labelStyle: TextStyle(color: Colors.green.shade800, fontFamily: 'Poppins'),
                   hintText: "Enter your password",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  hintStyle: TextStyle(color: Colors.green.shade600, fontFamily: 'Poppins'),
                   prefixIcon: Icon(Icons.lock, color: Colors.green.shade800),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -111,8 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Log in",
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,  // Medium weight for button text
                     color: Colors.white,
+                    fontFamily: 'Poppins',  // Ensure the button text uses Poppins
                   ),
                 ),
               ),
@@ -123,15 +154,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextButton(
                     onPressed: () => Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => ForgotPasswordScreen()),
+                      MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),
                     ),
                     child: Text(
                       "Forgot Password?",
                       style: TextStyle(
+                        fontFamily: 'Poppins',  // Apply Poppins font
                         color: Colors.green.shade800,
                         fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold,  // Medium weight for button
                       ),
                     ),
                   ),
@@ -144,9 +175,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
+                        fontFamily: 'Poppins',  // Apply Poppins font
                         color: Colors.green.shade800,
                         fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold,  // Medium weight for button
                       ),
                     ),
                   ),

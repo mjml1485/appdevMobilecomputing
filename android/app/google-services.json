@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "803703433302",
+    "project_id": "grocery-app-cc250",
+    "storage_bucket": "grocery-app-cc250.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803703433302:android:3a7a778334fbe68b36b3f7",
+        "android_client_info": {
+          "package_name": "com.NutriWise.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtuVLspqtiPX5391IPM5zRlKukKmFOCZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803703433302:android:2b87a05dcb55869836b3f7",
+        "android_client_info": {
+          "package_name": "com.example.NutriWise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtuVLspqtiPX5391IPM5zRlKukKmFOCZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

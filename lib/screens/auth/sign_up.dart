@@ -1,17 +1,34 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'log_in.dart';
 
 class SignUpScreen extends StatelessWidget {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
   SignUpScreen({super.key});
 
-  void _signUp(BuildContext context) {
-    Navigator.pop(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Account created successfully!")),
-    );
+  void _signUp(BuildContext context) async {
+    try {
+      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      _emailController.clear();
+      _passwordController.clear();
+
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Account created successfully!")),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: $e")),
+      );
+    }
   }
 
   @override
@@ -33,7 +50,6 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Sign Up
               Text(
                 "Sign Up",
                 style: TextStyle(
@@ -43,7 +59,6 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              // Name input
               TextField(
                 controller: _nameController,
                 decoration: InputDecoration(
@@ -58,7 +73,6 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              // Email input
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -74,7 +88,6 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              // Password input
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -90,7 +103,6 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 25),
-              // Sign up button
               ElevatedButton(
                 onPressed: () => _signUp(context),
                 style: ElevatedButton.styleFrom(
@@ -101,7 +113,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 child: const Text(
-                  "Sign up",
+                  "Sign Up",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -110,17 +122,27 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              // Link to go back to Log in button
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text(
+                    "Already have an account? ",
+                    style: TextStyle(
+                      color: Colors.green.shade800,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(
-                      "Already have an account? Log in",
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    ),
+                    child: const Text(
+                      "Log In",
                       style: TextStyle(
-                        color: Colors.green.shade800,
-                        fontSize: 14,
+                        color: Colors.green,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

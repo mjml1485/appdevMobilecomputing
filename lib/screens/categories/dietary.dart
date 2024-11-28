@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DietaryScreen extends StatelessWidget {
-  const DietaryScreen({Key? key}) : super(key: key);
+  const DietaryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

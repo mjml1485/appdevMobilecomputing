@@ -1,10 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'screens/auth/log_in.dart';
 import 'screens/main_screens/home.dart';
 import 'screens/main_screens/favorites.dart';
 import 'screens/main_screens/profile.dart';
-import 'screens/auth/log_in.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -17,7 +22,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'NutriWise',
       theme: ThemeData(primarySwatch: Colors.green),
-      home: const LoginScreen(),
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            final user = snapshot.data;
+            if (user == null) {
+              return const LoginScreen();
+            } else {
+              return const MainNavigation();
+            }
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
 }
