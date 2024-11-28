@@ -16,7 +16,52 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
-  // Method to login
+  bool _obscurePassword = true;
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: const Color(0xFFF5F5F5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        title: Text(
+          "Error",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins',
+            color: Colors.green.shade800,
+          ),
+        ),
+        content: Text(
+          message,
+          style: TextStyle(
+            fontSize: 16,
+            fontFamily: 'Poppins',
+            color: Colors.green.shade700,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.green.shade800,
+            ),
+            child: const Text(
+              "OK",
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   void _login() async {
     try {
       final email = _emailController.text;
@@ -26,10 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
         throw FirebaseAuthException(code: 'invalid-email', message: 'Please enter a valid email address');
       }
 
-      final UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const MainNavigation()),
@@ -46,19 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
         errorMessage = e.message ?? errorMessage;
       }
 
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text("Error"),
-          content: Text(errorMessage),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("OK"),
-            ),
-          ],
-        ),
-      );
+      _showErrorDialog(errorMessage);
     }
   }
 
@@ -93,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins',  // Apply Poppins font
+                  fontFamily: 'Poppins',
                   color: Colors.green.shade800,
                 ),
               ),
@@ -103,9 +134,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: "Email or Phone Number",
-                  labelStyle: TextStyle(color: Colors.green.shade800, fontFamily: 'Poppins', fontWeight: FontWeight.normal),  // Poppins regular weight
-                  hintText: "Enter your email or phone",
-                  hintStyle: TextStyle(color: Colors.green.shade600, fontFamily: 'Poppins', fontWeight: FontWeight.normal),  // Poppins regular weight
+                  labelStyle: TextStyle(
+                    color: Colors.green.shade800,
+                    fontFamily: 'Poppins',
+                  ),
                   prefixIcon: Icon(Icons.email, color: Colors.green.shade800),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -115,13 +147,25 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(height: 10),
               TextField(
                 controller: _passwordController,
-                obscureText: true,
+                obscureText: _obscurePassword,
                 decoration: InputDecoration(
                   labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.green.shade800, fontFamily: 'Poppins'),
-                  hintText: "Enter your password",
-                  hintStyle: TextStyle(color: Colors.green.shade600, fontFamily: 'Poppins'),
+                  labelStyle: TextStyle(
+                    color: Colors.green.shade800,
+                    fontFamily: 'Poppins',
+                  ),
                   prefixIcon: Icon(Icons.lock, color: Colors.green.shade800),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.green.shade800,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -141,9 +185,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   "Log in",
                   style: TextStyle(
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,  // Medium weight for button text
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontFamily: 'Poppins',  // Ensure the button text uses Poppins
+                    fontFamily: 'Poppins',
                   ),
                 ),
               ),
@@ -154,15 +198,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextButton(
                     onPressed: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),
+                      MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
                     ),
                     child: Text(
                       "Forgot Password?",
                       style: TextStyle(
-                        fontFamily: 'Poppins',  // Apply Poppins font
+                        fontFamily: 'Poppins',
                         color: Colors.green.shade800,
                         fontSize: 15,
-                        fontWeight: FontWeight.bold,  // Medium weight for button
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -175,10 +219,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
-                        fontFamily: 'Poppins',  // Apply Poppins font
+                        fontFamily: 'Poppins',
                         color: Colors.green.shade800,
                         fontSize: 15,
-                        fontWeight: FontWeight.bold,  // Medium weight for button
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),

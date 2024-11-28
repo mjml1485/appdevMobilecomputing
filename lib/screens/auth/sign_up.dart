@@ -2,17 +2,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'log_in.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
-  SignUpScreen({super.key});
+  bool _obscurePassword = true;
 
   void _signUp(BuildContext context) async {
     try {
-      final UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
@@ -22,11 +29,51 @@ class SignUpScreen extends StatelessWidget {
 
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Account created successfully!")),
+        SnackBar(
+          content: Text(
+            "Account created successfully!",
+            style: const TextStyle(fontFamily: 'Poppins'),
+          ),
+          backgroundColor: Colors.green.shade600,
+        ),
       );
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Error: $e")),
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: Colors.green.shade800, width: 2),
+          ),
+          title: Text(
+            "Error",
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade800,
+            ),
+          ),
+          content: Text(
+            e.toString(),
+            style: const TextStyle(
+              fontFamily: 'Poppins',
+              color: Colors.black87,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(
+                "OK",
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green.shade800,
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     }
   }
@@ -53,6 +100,7 @@ class SignUpScreen extends StatelessWidget {
               Text(
                 "Sign Up",
                 style: TextStyle(
+                  fontFamily: 'Poppins',
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.green.shade800,
@@ -63,9 +111,10 @@ class SignUpScreen extends StatelessWidget {
                 controller: _nameController,
                 decoration: InputDecoration(
                   labelText: "Name",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
-                  hintText: "Enter your name",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  labelStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Colors.green.shade800,
+                  ),
                   prefixIcon: Icon(Icons.person, color: Colors.green.shade800),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -78,9 +127,10 @@ class SignUpScreen extends StatelessWidget {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   labelText: "Email or Phone Number",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
-                  hintText: "Enter your email or phone",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  labelStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Colors.green.shade800,
+                  ),
                   prefixIcon: Icon(Icons.email, color: Colors.green.shade800),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -90,13 +140,25 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: 10),
               TextField(
                 controller: _passwordController,
-                obscureText: true,
+                obscureText: _obscurePassword,
                 decoration: InputDecoration(
                   labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.green.shade800),
-                  hintText: "Enter your password",
-                  hintStyle: TextStyle(color: Colors.green.shade600),
+                  labelStyle: TextStyle(
+                    fontFamily: 'Poppins',
+                    color: Colors.green.shade800,
+                  ),
                   prefixIcon: Icon(Icons.lock, color: Colors.green.shade800),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.green.shade800,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -115,6 +177,7 @@ class SignUpScreen extends StatelessWidget {
                 child: const Text(
                   "Sign Up",
                   style: TextStyle(
+                    fontFamily: 'Poppins',
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -128,6 +191,7 @@ class SignUpScreen extends StatelessWidget {
                   Text(
                     "Already have an account? ",
                     style: TextStyle(
+                      fontFamily: 'Poppins',
                       color: Colors.green.shade800,
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -136,11 +200,13 @@ class SignUpScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () => Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
                     ),
                     child: const Text(
                       "Log In",
                       style: TextStyle(
+                        fontFamily: 'Poppins',
                         color: Colors.green,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
