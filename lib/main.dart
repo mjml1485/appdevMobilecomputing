@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'favorites_screen.dart';
-import 'profile_screen.dart';
-import 'login_screen.dart';
+import 'screens/main_screens/home.dart';
+import 'screens/main_screens/favorites.dart';
+import 'screens/main_screens/profile.dart';
+import 'screens/auth/log_in.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'NutriWise',
       theme: ThemeData(primarySwatch: Colors.green),
-      home: LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }
 
 class MainNavigation extends StatefulWidget {
-  const MainNavigation({Key? key}) : super(key: key);
+  const MainNavigation({super.key});
 
   @override
   State<MainNavigation> createState() => _MainNavigationState();
@@ -33,9 +33,9 @@ class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 1;
 
   final List<Widget> _screens = [
-    FavoritesScreen(),
-    HomeScreen(),
-    ProfileScreen(),
+    const FavoritesScreen(),
+    const HomeScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

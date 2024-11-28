@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'profile_screen.dart';
-import 'favorites_screen.dart';
-import 'settings_screen.dart';
-import 'contact_us.dart';
-import 'log_out.dart';
+import 'profile.dart';
+import 'favorites.dart';
+import 'settings.dart';
+import '../utils/contact_us.dart';
+import '../utils/log_out.dart';
+
+import '../categories/dietary.dart';
+import '../categories/health.dart';
+import '../categories/meals.dart';
+import '../categories/ingredients.dart';
+import '../categories/beverages.dart';
+import '../categories/pantry.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -224,16 +231,17 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    _buildCategoryIcon('Dietary', 'assets/categories/dietary.png'),
-                    _buildCategoryIcon('Health', 'assets/categories/health.jpg'),
-                    _buildCategoryIcon('Meals', 'assets/categories/meal.png'),
-                    _buildCategoryIcon('Ingredients', 'assets/categories/ingredients.png'),
-                    _buildCategoryIcon('Beverages', 'assets/categories/beverages.png'),
-                    _buildCategoryIcon('Pantry', 'assets/categories/pantry.png'),
+                    _buildCategoryIcon(context, 'Dietary', 'assets/categories/dietary.png', const DietaryScreen()),
+                    _buildCategoryIcon(context, 'Health', 'assets/categories/health.jpg', const HealthScreen()),
+                    _buildCategoryIcon(context, 'Meals', 'assets/categories/meal.png', const MealsScreen()),
+                    _buildCategoryIcon(context, 'Ingredients', 'assets/categories/ingredients.png', const IngredientsScreen()),
+                    _buildCategoryIcon(context, 'Beverages', 'assets/categories/beverages.png', const BeveragesScreen()),
+                    _buildCategoryIcon(context, 'Pantry', 'assets/categories/pantry.png', const PantryScreen()),
                   ],
                 ),
               ),
             ),
+
             const SizedBox(height: 20),
             _buildSectionTitle('Featured Products'),
             const SizedBox(height: 8),
@@ -311,33 +319,41 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildCategoryIcon(String label, String assetPath) {
+  Widget _buildCategoryIcon(BuildContext context, String label, String assetPath, Widget screen) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
-      child: Column(
-        children: [
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage(assetPath),
-                fit: BoxFit.cover,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => screen),
+          );
+        },
+        child: Column(
+          children: [
+            Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(assetPath),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
+            const SizedBox(height: 8),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
