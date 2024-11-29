@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
               'Smart Swap',
               style: TextStyle(
                 fontFamily: 'YesevaOne',
-                fontSize: 18,
+                fontSize: 20,
                 color: Colors.green,
                 fontWeight: FontWeight.bold,
               ),
@@ -160,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                                     fontSize: 14,
                                     color: Colors.green,
                                     fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -354,7 +354,7 @@ class HomeScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontFamily: 'Poppins',
-                fontSize: 10,
+                fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -408,7 +408,7 @@ class HomeScreen extends StatelessWidget {
         title,
         style: const TextStyle(
           fontFamily: 'Poppins',
-          fontSize: 17,
+          fontSize: 18,
           fontWeight: FontWeight.bold,
           color: Colors.green,
         ),
