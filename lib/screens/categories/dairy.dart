@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MealsScreen extends StatelessWidget {
-  const MealsScreen({super.key});
+class DairyScreen extends StatelessWidget {
+  const DairyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Meals')),
-      body: const Center(child: Text('Meals Category')),
+      appBar: AppBar(title: const Text('Dairy')),
+      body: const Center(child: Text('Dairy Category')),
     );
   }
 }

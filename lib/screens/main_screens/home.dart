@@ -4,12 +4,12 @@ import 'favorites.dart';
 import 'settings.dart';
 import '../utils/contact_us.dart';
 import '../utils/log_out.dart';
-import '../categories/dietary.dart';
-import '../categories/health.dart';
-import '../categories/meals.dart';
-import '../categories/ingredients.dart';
 import '../categories/beverages.dart';
-import '../categories/pantry.dart';
+import '../categories/snacks.dart';
+import '../categories/dairy.dart';
+import '../categories/staples.dart';
+import '../categories/canned.dart';
+import '../categories/spices.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -237,12 +237,12 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    _buildCategoryIcon(context, 'Dietary', 'assets/categories/dietary.png', const DietaryScreen()),
-                    _buildCategoryIcon(context, 'Health', 'assets/categories/health.jpg', const HealthScreen()),
-                    _buildCategoryIcon(context, 'Meals', 'assets/categories/meal.png', const MealsScreen()),
-                    _buildCategoryIcon(context, 'Ingredients', 'assets/categories/ingredients.png', const IngredientsScreen()),
-                    _buildCategoryIcon(context, 'Beverages', 'assets/categories/beverages.png', const BeveragesScreen()),
-                    _buildCategoryIcon(context, 'Pantry', 'assets/categories/pantry.png', const PantryScreen()),
+                    _buildCategoryIcon(context, 'Beverages', 'assets/categories/dietary.png', const BeveragesScreen()),
+                    _buildCategoryIcon(context, 'Snacks', 'assets/categories/health.jpg', const SnacksScreen()),
+                    _buildCategoryIcon(context, 'Dairy', 'assets/categories/meal.png', const DairyScreen()),
+                    _buildCategoryIcon(context, 'Staples', 'assets/categories/ingredients.png', const StaplesScreen()),
+                    _buildCategoryIcon(context, 'Canned', 'assets/categories/beverages.png', const CannedScreen()),
+                    _buildCategoryIcon(context, 'Spices', 'assets/categories/pantry.png', const SpicesScreen()),
                   ],
                 ),
               ),

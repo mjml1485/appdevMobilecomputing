@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class IngredientsScreen extends StatelessWidget {
-  const IngredientsScreen({super.key});
+class StaplesScreen extends StatelessWidget {
+  const StaplesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Ingredients')),
-      body: const Center(child: Text('Ingredients Category')),
+      appBar: AppBar(title: const Text('Staples')),
+      body: const Center(child: Text('Staples Category')),
     );
   }
 }
