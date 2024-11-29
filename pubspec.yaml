@@ -62,6 +62,27 @@ flutter:
     - assets/categories/Beverages/Almond_Milk/Pacific_Foods.jpg
     - assets/categories/Beverages/Almond_Milk/Almond_Breeze.jpg
 
+    # Category 2: Snacks (Pretzels)
+    - assets/categories/Snacks/Pretzels/Annies_Organic_Pretzel_Bunnies.jpg
+    - assets/categories/Snacks/Pretzels/Synders_Pretzel.jpg
+    - assets/categories/Snacks/Pretzels/Trader_Joes_Honey_Wheat_Pretzels.jpg
+    # Category 2: Snacks (Trail Mix)
+    - assets/categories/Snacks/Trail_Mix/Take_Root_Banana_Cacao_Trail_Mix.jpg
+    - assets/categories/Snacks/Trail_Mix/Nuts_&_Glory_Trail_Mix.png
+    - assets/categories/Snacks/Trail_Mix/Trophy_Farms_Trail_Mix.jpg
+    # Category 2: Snacks (Granola Bars)
+    - assets/categories/Snacks/Granola_Bars/Kind_Bars.jpg
+    - assets/categories/Snacks/Granola_Bars/Nature_Valley_Crunchy_Granola_Bars.jpg
+    - assets/categories/Snacks/Granola_Bars/Take_Root_Energy_Bars.jpg
+    # Category 2: Snacks (Popcorn)
+    - assets/categories/Snacks/Popcorn/Boom_Chicka_Pop.jpg
+    - assets/categories/Snacks/Popcorn/Lesser_Evil_Himalayan_Pink_Salt_Popcorn.jpg
+    - assets/categories/Snacks/Popcorn/Skinny_Pop_Original.jpg
+    # Category 2: Snacks (Dark Chocolate)
+    - assets/categories/Snacks/Dark_Chocolate/Theo_Organic_85%_Dark_Chocolate.jpg
+    - assets/categories/Snacks/Dark_Chocolate/Risa_Chocolates.jpg
+    - assets/categories/Snacks/Dark_Chocolate/Malagos_Dark_Chocolate.jpg
+
   fonts:
     - family: YesevaOne
       fonts:
