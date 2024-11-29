@@ -35,12 +35,32 @@ flutter:
     - assets/logo.png
     - assets/login_bg.jpg
     # Categories
-    - assets/categories/dietary.png
-    - assets/categories/health.jpg
-    - assets/categories/meal.png
-    - assets/categories/ingredients.png
-    - assets/categories/beverages.png
-    - assets/categories/pantry.png
+    - assets/categories/Beverages/beverages.jpg
+    - assets/categories/Snacks/snacks.jpg
+    - assets/categories/Dairy/dairy.jpg
+    - assets/categories/Staples/staples.jpg
+    - assets/categories/Canned/canned.jpg
+    - assets/categories/Spices/spices.jpg
+    # Category 1: Beverages (Coffee)
+    - assets/categories/Beverages/Coffee/Basilio_Coffee.jpg
+    - assets/categories/Beverages/Coffee/SGD_Coffee.png
+    - assets/categories/Beverages/Coffee/Bos_Coffee.png
+    # Category 1: Beverages (Green Tea)
+    - assets/categories/Beverages/Green_Tea/Yogi_Green_Tea.jpg
+    - assets/categories/Beverages/Green_Tea/Twinings_Green_Tea.png
+    - assets/categories/Beverages/Green_Tea/Lipton_Matcha.jpg
+    # Category 1: Beverages (Orange Juice)
+    - assets/categories/Beverages/Orange_Juice/Tropicana_Pure.jpg
+    - assets/categories/Beverages/Orange_Juice/Floridas_Natural.jpg
+    - assets/categories/Beverages/Orange_Juice/Locally_Blended.jpg
+    # Category 1: Beverages (Sparkling Water)
+    - assets/categories/Beverages/Sparkling_Water/San_Pellegrino.jpg
+    - assets/categories/Beverages/Sparkling_Water/Perrier.jpg
+    - assets/categories/Beverages/Sparkling_Water/Natures_Spring.jpg
+    # Category 1: Beverages (Almond Milk)
+    - assets/categories/Beverages/Almond_Milk/Alpro_Almond_Milk.jpg
+    - assets/categories/Beverages/Almond_Milk/Pacific_Foods.jpg
+    - assets/categories/Beverages/Almond_Milk/Almond_Breeze.jpg
 
   fonts:
     - family: YesevaOne

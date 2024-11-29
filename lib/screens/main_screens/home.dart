@@ -237,12 +237,12 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    _buildCategoryIcon(context, 'Beverages', 'assets/categories/dietary.png', const BeveragesScreen()),
-                    _buildCategoryIcon(context, 'Snacks', 'assets/categories/health.jpg', const SnacksScreen()),
-                    _buildCategoryIcon(context, 'Dairy', 'assets/categories/meal.png', const DairyScreen()),
-                    _buildCategoryIcon(context, 'Staples', 'assets/categories/ingredients.png', const StaplesScreen()),
-                    _buildCategoryIcon(context, 'Canned', 'assets/categories/beverages.png', const CannedScreen()),
-                    _buildCategoryIcon(context, 'Spices', 'assets/categories/pantry.png', const SpicesScreen()),
+                    _buildCategoryIcon(context, 'Beverages', 'assets/categories/Beverages/beverages.jpg', const BeveragesScreen()),
+                    _buildCategoryIcon(context, 'Snacks', 'assets/categories/Snacks/snacks.jpg', const SnacksScreen()),
+                    _buildCategoryIcon(context, 'Dairy', 'assets/categories/Dairy/dairy.jpg', const DairyScreen()),
+                    _buildCategoryIcon(context, 'Staples', 'assets/categories/Staples/staples.jpg', const StaplesScreen()),
+                    _buildCategoryIcon(context, 'Canned', 'assets/categories/Canned/canned.jpg', const CannedScreen()),
+                    _buildCategoryIcon(context, 'Spices', 'assets/categories/Spices/spices.jpg', const SpicesScreen()),
                   ],
                 ),
               ),
@@ -338,8 +338,8 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 60,
-              height: 60,
+              width: 65,
+              height: 65,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(

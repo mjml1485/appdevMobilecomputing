@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BeveragesScreen extends StatefulWidget {
   const BeveragesScreen({super.key});
@@ -15,29 +14,111 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
 
   final Map<String, List<Map<String, String>>> products = {
     'Coffee': [
-      {'name': 'Basilio Cofee', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'SGD Coffee', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Bo\'s Coffee', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
+      {
+        'name': 'Basilio Coffee',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Coffee/Basilio_Coffee.jpg',
+      },
+      {
+        'name': 'SGD Coffee',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Coffee/SGD_Coffee.png',
+      },
+      {
+        'name': 'Bo\'s Coffee',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Coffee/Bos_Coffee.png',
+
+      }
     ],
+
     'Green Tea': [
-      {'name': 'Yogi Green Tea', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Twinings Green Tea', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Lipton Matcha', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
+      {
+        'name': 'Yogi Green Tea',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Green_Tea/Yogi_Green_Tea.jpg',
+      },
+      {
+        'name': 'Twinings Green Tea',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Green_Tea/Twinings_Green_Tea.png',
+      },
+      {
+        'name': 'Lipton Matcha',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Green_Tea/Lipton_Matcha.jpg',
+      }
     ],
+
     'Orange Juice': [
-      {'name': 'Tropicana Pure', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Florida\'s Natural', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Locally Blended', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
+      {
+        'name': 'Tropicana Pure',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Orange_Juice/Tropicana_Pure.jpg',
+      },
+      {
+        'name': 'Florida\'s Natural',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Orange_Juice/Floridas_Natural.jpg',
+      },
+      {
+        'name': 'Locally Blended',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Orange_Juice/Locally_Blended.jpg',
+
+      }
     ],
+
     'Sparkling Water': [
-      {'name': 'San Pellegrino', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Perrier', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Nature\'s Spring', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
+      {
+        'name': 'San Pellegrino',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Sparkling_Water/San_Pellegrino.jpg',
+      },
+      {
+        'name': 'Perrier',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Sparkling_Water/Perrier.jpg',
+      },
+      {
+        'name': 'Nature\'s Spring',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Sparkling_Water/Natures_Spring.jpg',
+
+      }
     ],
+
     'Almond Milk': [
-      {'name': 'Alpro Almond Milk', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Pacific Foods', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
-      {'name': 'Almond Breeze', 'description': 'Blah Blah Blah Blah.', 'image': 'assets/categories/dietary.png'},
+      {
+        'name': 'Alpro Almond Milk',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Almond_Milk/Alpro_Almond_Milk.jpg',
+      },
+      {
+        'name': 'Pacific Foods',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Almond_Milk/Pacific_Foods.jpg',
+      },
+      {
+        'name': 'Almond Breeze',
+        'description': 'Blah Blah Blah Blah.',
+        'longDescription': 'Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah. Blah Blah Blah Blah.',
+        'image': 'assets/categories/Beverages/Almond_Milk/Almond_Breeze.jpg',
+      },
     ],
   };
 
@@ -76,6 +157,94 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
     });
   }
 
+  void showProductDetails(BuildContext context, Map<String, String> product, String productCategory) {
+    final isFavorite = favoriteProducts.contains(product['name']);
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      // Product Image
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          product['image'] ?? '',
+                          height: 100,
+                          width: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      // Product Name and Category
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            product['name'] ?? '',
+                            style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Category: $productCategory',
+                            style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontSize: 14,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  // Favorite Icon
+                  IconButton(
+                    icon: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      color: isFavorite ? Colors.red : Colors.green,
+                      size: 28,
+                    ),
+                    onPressed: () {
+                      toggleFavorite(product['name'] ?? '');
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              // Product Long Description
+              Text(
+                product['longDescription'] ?? 'No detailed description available.',
+                style: const TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Map<String, String>> productsToDisplay = [];
@@ -106,22 +275,23 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
             color: Colors.green,
             fontWeight: FontWeight.bold,
           ),
-        ),
+        )
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Search Bar
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(16.0, 10, 16.0, 7),
               child: TextField(
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.search, color: Colors.green),
                   hintText: 'Search products...',
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide(color: Colors.green),
                   ),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 16.0),
                 ),
               ),
             ),
@@ -194,78 +364,75 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
                     ? getCategoryName(product)
                     : selectedCategory;
 
-                return Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                  child: Row(
-                    children: [
-                      // Product Image
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          product['image'] ?? '',
-                          fit: BoxFit.cover,
-                          height: 120,
-                          width: 120,
+                return GestureDetector(
+                  onTap: () => showProductDetails(context, product, productCategory),
+                  child: Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 16),
+                    child: Row(
+                      children: [
+                        // Product Image
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            product['image'] ?? '',
+                            fit: BoxFit.cover,
+                            height: 120,
+                            width: 120,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      // Product Info
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Product Title
-                            Text(
-                              product['name'] ?? '',
-                              style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            const SizedBox(height: 5),
-                            // Category
-                            if (selectedCategory.isEmpty)
+                        const SizedBox(width: 10),
+                        // Product Info
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Product Title
                               Text(
-                                'Category: $productCategory',
+                                product['name'] ?? '',
+                                style: const TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              const SizedBox(height: 5),
+                              // Category
+                              if (selectedCategory.isEmpty)
+                                Text(
+                                  'Category: $productCategory',
+                                  style: const TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 14,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              const SizedBox(height: 5),
+                              // Description
+                              Text(
+                                product['description'] ?? '',
                                 style: const TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 14,
                                   color: Colors.grey,
                                 ),
                               ),
-                            const SizedBox(height: 5),
-                            // Description
-                            Text(
-                              product['description'] ?? '',
-                              style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: 14,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      // Heart Icon
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: IconButton(
-                            onPressed: () => toggleFavorite(product['name'] ?? ''),
-                            icon: Icon(
-                              isFavorite ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
-                              color: isFavorite ? Colors.red : Colors.grey,
-                            ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
+                        // Favorite Icon
+                        IconButton(
+                          icon: Icon(
+                            isFavorite ? Icons.favorite : Icons.favorite_border,
+                            color: isFavorite ? Colors.red : Colors.green,
+                          ),
+                          onPressed: () => toggleFavorite(product['name'] ?? ''),
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -277,11 +444,8 @@ class _BeveragesScreenState extends State<BeveragesScreen> {
   }
 
   String getCategoryName(Map<String, String> product) {
-    for (var category in products.entries) {
-      if (category.value.contains(product)) {
-        return category.key;
-      }
-    }
-    return '';
+    return products.keys.firstWhere((category) {
+      return products[category]?.contains(product) ?? false;
+    }, orElse: () => '');
   }
 }
