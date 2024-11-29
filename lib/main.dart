@@ -6,6 +6,12 @@ import 'screens/auth/log_in.dart';
 import 'screens/main_screens/home.dart';
 import 'screens/main_screens/favorites.dart';
 import 'screens/main_screens/profile.dart';
+import 'screens/categories/beverages.dart';
+import 'screens/categories/canned.dart';
+import 'screens/categories/dairy.dart';
+import 'screens/categories/snacks.dart';
+import 'screens/categories/spices.dart';
+import 'screens/categories/staples.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -58,10 +64,20 @@ class _MainNavigationState extends State<MainNavigation> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (_selectedIndex == index) {
+      _navigatorKeys[index].currentState?.popUntil((route) => route.isFirst);
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
+
+  final List<GlobalKey<NavigatorState>> _navigatorKeys = [
+    GlobalKey<NavigatorState>(),
+    GlobalKey<NavigatorState>(),
+    GlobalKey<NavigatorState>(),
+  ];
 
   Widget _buildCustomIcon({
     required bool isSelected,
@@ -102,7 +118,62 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          Navigator(
+            key: _navigatorKeys[0],
+            onGenerateRoute: (routeSettings) {
+              return MaterialPageRoute(
+                builder: (context) => const FavoritesScreen(),
+              );
+            },
+          ),
+          Navigator(
+            key: _navigatorKeys[1],
+            onGenerateRoute: (routeSettings) {
+              switch (routeSettings.name) {
+                case '/beverages':
+                  return MaterialPageRoute(
+                    builder: (context) => const BeveragesScreen(),
+                  );
+                case '/canned':
+                  return MaterialPageRoute(
+                    builder: (context) => const CannedScreen(),
+                  );
+                case '/dairy':
+                  return MaterialPageRoute(
+                    builder: (context) => const DairyScreen(),
+                  );
+                case '/snacks':
+                  return MaterialPageRoute(
+                    builder: (context) => const SnacksScreen(),
+                  );
+                case '/spices':
+                  return MaterialPageRoute(
+                    builder: (context) => const SpicesScreen(),
+                  );
+                case '/staples':
+                  return MaterialPageRoute(
+                    builder: (context) => const StaplesScreen(),
+                  );
+                default:
+                  return MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  );
+              }
+            },
+          ),
+          Navigator(
+            key: _navigatorKeys[2],
+            onGenerateRoute: (routeSettings) {
+              return MaterialPageRoute(
+                builder: (context) => const ProfileScreen(),
+              );
+            },
+          ),
+        ],
+      ),
       bottomNavigationBar: Container(
         height: 50,
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
