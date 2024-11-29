@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'screens/auth/log_in.dart';
 import 'screens/main_screens/home.dart';
 import 'screens/main_screens/favorites.dart';
@@ -62,29 +63,90 @@ class _MainNavigationState extends State<MainNavigation> {
     });
   }
 
+  Widget _buildCustomIcon({
+    required bool isSelected,
+    required IconData icon,
+  }) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      height: isSelected ? 50 : 45,
+      width: isSelected ? 50 : 45,
+      decoration: BoxDecoration(
+        color: isSelected ? Colors.white : Colors.transparent,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isSelected ? Colors.green : Colors.transparent,
+          width: 2,
+        ),
+        boxShadow: isSelected
+            ? [
+          BoxShadow(
+            color: Colors.green.withOpacity(0.4),
+            blurRadius: 6,
+            spreadRadius: 1,
+          ),
+        ]
+            : [],
+      ),
+      child: Center(
+        child: FaIcon(
+          icon,
+          color: isSelected ? Colors.green : Colors.white,
+          size: isSelected ? 26 : 22,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.green,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: 'Favorites',
+      bottomNavigationBar: Container(
+        height: 55,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.green.shade500,
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            color: Colors.green.shade700,
+            width: 4,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
-          ),
-        ],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () => _onItemTapped(0),
+              child: _buildCustomIcon(
+                isSelected: _selectedIndex == 0,
+                icon: Icons.favorite,
+              ),
+            ),
+            GestureDetector(
+              onTap: () => _onItemTapped(1),
+              child: _buildCustomIcon(
+                isSelected: _selectedIndex == 1,
+                icon: FontAwesomeIcons.home,
+              ),
+            ),
+            GestureDetector(
+              onTap: () => _onItemTapped(2),
+              child: _buildCustomIcon(
+                isSelected: _selectedIndex == 2,
+                icon: FontAwesomeIcons.userAlt,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

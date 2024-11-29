@@ -4,7 +4,6 @@ import 'favorites.dart';
 import 'settings.dart';
 import '../utils/contact_us.dart';
 import '../utils/log_out.dart';
-
 import '../categories/dietary.dart';
 import '../categories/health.dart';
 import '../categories/meals.dart';
@@ -160,6 +159,8 @@ class HomeScreen extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 14,
                                     color: Colors.green,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.normal,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -177,7 +178,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: const Text(
                               'Explore',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.normal,
+                              ),
                             ),
                           ),
                         ],
